@@ -177,23 +177,29 @@
                         From <span style="color: #FFB6C1;">requests</span> to <span class="text-vivid-green">resolution</span>
                     </h1>
                     
-                    <p class="text-lg sm:text-xl text-soft-gray mb-8 leading-relaxed max-w-2xl mx-auto">
-                        AI agent handles 96% of resident calls 24/7. Starting at $29/month per unit.
+                    <p class="text-lg sm:text-xl text-soft-gray mb-6 leading-relaxed max-w-2xl mx-auto">
+                        AI agent handles 96% of resident calls 24/7. Pricing starts at <span class="text-pure-white font-semibold">$29 per unit annually</span> (about $2.42/month per unit).
                     </p>
+                    <div class="text-sm text-soft-gray mb-8 max-w-xl mx-auto">
+                        <span class="inline-flex items-center space-x-2 bg-medium-gray/60 text-pure-white px-3 py-2 rounded-full">
+                            <i class="fas fa-info-circle text-electric-blue"></i>
+                            <span><strong>Unit</strong> = each dwelling or HOA lot covered by Maica.</span>
+                        </span>
+                    </div>
                     
                     <!-- Cost Examples -->
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8">
                         <div class="bg-deep-charcoal/50 p-4 rounded-lg border border-vivid-green/20">
                             <div class="text-vivid-green font-bold">50 units</div>
-                            <div class="text-pure-white text-sm">$121/month total</div>
+                            <div class="text-pure-white text-sm">$121/month total (annual plan)</div>
                         </div>
                         <div class="bg-deep-charcoal/50 p-4 rounded-lg border border-electric-blue/20">
                             <div class="text-electric-blue font-bold">150 units</div>
-                            <div class="text-pure-white text-sm">$363/month total</div>
+                            <div class="text-pure-white text-sm">$363/month total (annual plan)</div>
                         </div>
                         <div class="bg-deep-charcoal/50 p-4 rounded-lg border border-warning-orange/20">
                             <div class="text-warning-orange font-bold">300 units</div>
-                            <div class="text-pure-white text-sm">$725/month total</div>
+                            <div class="text-pure-white text-sm">$725/month total (annual plan)</div>
                         </div>
                     </div>
                     
@@ -401,114 +407,6 @@
                     <div class="text-5xl font-bold text-vivid-green mb-4 stat-number">24/7</div>
                     <div class="text-pure-white font-semibold text-lg mb-2">Property-Specific Answers</div>
                     <div class="text-soft-gray">AI knows your CC&Rs, bylaws, and property rules for accurate responses</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ROI Calculator Section -->
-    <section class="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-medium-gray to-deep-charcoal">
-        <div class="max-w-ai mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl sm:text-3xl lg:text-section font-bold text-pure-white mb-6">
-                    Calculate Your ROI in 30 Seconds
-                </h2>
-                <p class="text-lg text-soft-gray max-w-2xl mx-auto">
-                    See exactly how much time and money Maica will save your HOA
-                </p>
-            </div>
-            
-            <div class="max-w-4xl mx-auto bg-deep-charcoal/80 p-8 rounded-2xl border border-electric-blue/30">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Calculator Inputs -->
-                    <div>
-                        <h3 class="text-xl font-bold text-pure-white mb-6">Your Current Situation</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label class="block text-sm font-medium text-pure-white mb-2">Number of Units</label>
-                                <input type="number" id="units" placeholder="150" min="100" max="2000" 
-                                       class="w-full bg-medium-gray border border-light-gray rounded-lg px-4 py-3 text-pure-white placeholder-soft-gray focus:border-electric-blue focus:outline-none"
-                                       oninput="calculateROI()">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-pure-white mb-2">Board Member Hours/Week (Currently)</label>
-                                <input type="number" id="hours" placeholder="15" min="5" max="40"
-                                       class="w-full bg-medium-gray border border-light-gray rounded-lg px-4 py-3 text-pure-white placeholder-soft-gray focus:border-electric-blue focus:outline-none"
-                                       oninput="calculateROI()">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-medium text-pure-white mb-2">Average Board Member Hourly Value</label>
-                                <select id="hourlyRate" class="w-full bg-medium-gray border border-light-gray rounded-lg px-4 py-3 text-pure-white focus:border-electric-blue focus:outline-none" onchange="calculateROI()">
-                                    <option value="50">$50/hr (Conservative)</option>
-                                    <option value="75" selected>$75/hr (Professional)</option>
-                                    <option value="100">$100/hr (Executive)</option>
-                                    <option value="150">$150/hr (Senior Executive)</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Results -->
-                    <div class="bg-gradient-to-br from-electric-blue/20 to-vivid-green/20 p-6 rounded-xl border border-electric-blue/30">
-                        <h3 class="text-xl font-bold text-pure-white mb-6">Your Annual Savings</h3>
-                        <div class="space-y-4">
-                            <div class="flex justify-between items-center py-3 border-b border-light-gray/30">
-                                <span class="text-pure-white">Time Saved Weekly:</span>
-                                <span class="text-vivid-green font-bold text-lg" id="timeSaved">14.4 hours</span>
-                            </div>
-                            <div class="flex justify-between items-center py-3 border-b border-light-gray/30">
-                                <span class="text-pure-white">Annual Time Value:</span>
-                                <span class="text-vivid-green font-bold text-lg" id="timeValue">$56,160</span>
-                            </div>
-                            <div class="flex justify-between items-center py-3 border-b border-light-gray/30">
-                                <span class="text-pure-white">Maica Annual Cost:</span>
-                                <span class="text-pure-white font-bold text-lg" id="maicaCost">$43,800</span>
-                            </div>
-                            <div class="flex justify-between items-center py-4 bg-vivid-green/20 rounded-lg px-4 border border-vivid-green/30">
-                                <span class="text-pure-white font-bold text-lg">Net Annual Savings:</span>
-                                <span class="text-vivid-green font-bold text-2xl" id="netSavings">$12,360</span>
-                            </div>
-                            <div class="text-center pt-4">
-                                <div class="text-sm text-soft-gray mb-2">ROI Payback Period:</div>
-                                <div class="text-electric-blue font-bold text-xl" id="payback">2.8 months</div>
-                            </div>
-                        </div>
-                        
-                        <button onclick="accessDemo()" class="w-full mt-6 bg-electric-blue text-pure-white px-6 py-3 rounded-lg hover:brightness-110 hover:scale-102 transition-all duration-200 font-bold">
-                            See These Savings in Action
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="mt-8 text-center">
-                    <div class="inline-flex items-center space-x-2 bg-vivid-green/10 text-vivid-green px-4 py-2 rounded-full text-sm font-medium border border-vivid-green/20">
-                        <i class="fas fa-users"></i>
-                        <span>Join 150+ communities already saving with Maica</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Social Proof Banner -->
-            <div class="mt-16 text-center">
-                <div class="bg-gradient-to-r from-vivid-green/10 to-electric-blue/10 border border-vivid-green/30 rounded-xl p-6 max-w-4xl mx-auto">
-                    <div class="flex flex-wrap items-center justify-center gap-6 text-sm">
-                        <div class="flex items-center space-x-2 text-pure-white">
-                            <i class="fas fa-star text-vivid-green"></i>
-                            <span class="font-semibold">4.9/5 rating</span>
-                        </div>
-                        <div class="flex items-center space-x-2 text-pure-white">
-                            <i class="fas fa-building text-electric-blue"></i>
-                            <span class="font-semibold">150+ communities</span>
-                        </div>
-                        <div class="flex items-center space-x-2 text-pure-white">
-                            <i class="fas fa-phone-slash text-vivid-green"></i>
-                            <span class="font-semibold">50,000+ calls automated</span>
-                        </div>
-                        <div class="flex items-center space-x-2 text-pure-white">
-                            <i class="fas fa-clock text-electric-blue"></i>
-                            <span class="font-semibold">2-minute setup</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -793,66 +691,87 @@
                         <i class="fas fa-calculator text-electric-blue mr-3"></i>
                         Your Community Details
                     </h3>
-                    
+
                     <div class="space-y-6">
                         <div>
-                            <label class="block text-pure-white font-semibold mb-2">Number of Units</label>
-                            <input 
-                                type="number" 
-                                id="units" 
-                                class="w-full bg-medium-gray border border-light-gray/30 rounded-lg px-4 py-3 text-pure-white focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 outline-none transition-all duration-300" 
-                                placeholder="e.g., 150" 
+                            <label class="flex items-center text-pure-white font-semibold mb-2">
+                                Number of Units
+                                <button type="button" class="ml-2 text-electric-blue hover:text-vivid-green transition-colors duration-200" title="Count every dwelling or HOA lot that Maica will support." aria-label="What counts as a unit?">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                            </label>
+                            <input
+                                type="number"
+                                id="roiUnits"
+                                class="w-full bg-medium-gray border border-light-gray/30 rounded-lg px-4 py-3 text-pure-white focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 outline-none transition-all duration-300"
+                                placeholder="e.g., 150"
                                 value="150"
-                                min="10" 
+                                min="10"
                                 max="5000"
                                 oninput="calculateROI()"
                             >
+                            <p class="text-soft-gray text-sm mt-1">One unit = each dwelling or HOA lot you manage.</p>
                         </div>
-                        
+
                         <div>
-                            <label class="block text-pure-white font-semibold mb-2">Average Monthly Inquiries</label>
-                            <input 
-                                type="number" 
-                                id="inquiries" 
-                                class="w-full bg-medium-gray border border-light-gray/30 rounded-lg px-4 py-3 text-pure-white focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 outline-none transition-all duration-300" 
-                                placeholder="e.g., 200" 
+                            <label class="flex items-center text-pure-white font-semibold mb-2">
+                                Average Monthly Inquiries
+                                <button type="button" class="ml-2 text-electric-blue hover:text-vivid-green transition-colors duration-200" title="How many resident calls, emails, and portal messages your board handles per month." aria-label="What are monthly inquiries?">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                            </label>
+                            <input
+                                type="number"
+                                id="roiInquiries"
+                                class="w-full bg-medium-gray border border-light-gray/30 rounded-lg px-4 py-3 text-pure-white focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 outline-none transition-all duration-300"
+                                placeholder="e.g., 200"
                                 value="200"
-                                min="10" 
+                                min="10"
                                 max="2000"
                                 oninput="calculateROI()"
                             >
                             <p class="text-soft-gray text-sm mt-1">Maintenance requests, questions, complaints, etc.</p>
                         </div>
-                        
+
                         <div>
-                            <label class="block text-pure-white font-semibold mb-2">Board Member Hourly Rate</label>
+                            <label class="flex items-center text-pure-white font-semibold mb-2">
+                                Board Member Hourly Rate
+                                <button type="button" class="ml-2 text-electric-blue hover:text-vivid-green transition-colors duration-200" title="Estimate of the value of a board member's time (salary, opportunity cost, or consultant rate)." aria-label="What is the board member hourly rate?">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                            </label>
                             <div class="relative">
                                 <span class="absolute left-3 top-3 text-pure-white">$</span>
-                                <input 
-                                    type="number" 
-                                    id="hourlyRate" 
-                                    class="w-full bg-medium-gray border border-light-gray/30 rounded-lg pl-8 pr-4 py-3 text-pure-white focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 outline-none transition-all duration-300" 
-                                    placeholder="50" 
+                                <input
+                                    type="number"
+                                    id="roiHourlyRate"
+                                    class="w-full bg-medium-gray border border-light-gray/30 rounded-lg pl-8 pr-4 py-3 text-pure-white focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 outline-none transition-all duration-300"
+                                    placeholder="50"
                                     value="50"
-                                    min="10" 
+                                    min="10"
                                     max="200"
                                     oninput="calculateROI()"
                                 >
                             </div>
                             <p class="text-soft-gray text-sm mt-1">What board members' time is worth per hour</p>
                         </div>
-                        
+
                         <div>
-                            <label class="block text-pure-white font-semibold mb-2">Management Company Fee</label>
+                            <label class="flex items-center text-pure-white font-semibold mb-2">
+                                Management Company Fee
+                                <button type="button" class="ml-2 text-electric-blue hover:text-vivid-green transition-colors duration-200" title="Your current monthly contract cost with a property management company." aria-label="What is the management company fee?">
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                            </label>
                             <div class="relative">
                                 <span class="absolute left-3 top-3 text-pure-white">$</span>
-                                <input 
-                                    type="number" 
-                                    id="managementFee" 
-                                    class="w-full bg-medium-gray border border-light-gray/30 rounded-lg pl-8 pr-4 py-3 text-pure-white focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 outline-none transition-all duration-300" 
-                                    placeholder="1200" 
+                                <input
+                                    type="number"
+                                    id="roiManagementFee"
+                                    class="w-full bg-medium-gray border border-light-gray/30 rounded-lg pl-8 pr-4 py-3 text-pure-white focus:border-electric-blue focus:ring-2 focus:ring-electric-blue/20 outline-none transition-all duration-300"
+                                    placeholder="1200"
                                     value="1200"
-                                    min="0" 
+                                    min="0"
                                     max="10000"
                                     oninput="calculateROI()"
                                 >
@@ -861,7 +780,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- ROI Results -->
                 <div class="bg-gradient-to-br from-electric-blue/10 to-vivid-green/10 border border-electric-blue/30 rounded-xl p-8">
                     <h3 class="text-2xl font-bold text-pure-white mb-8 flex items-center">
@@ -887,9 +806,17 @@
                                     <div class="text-soft-gray">Calls Automated</div>
                                     <div class="text-pure-white font-semibold" id="callsAutomated">192 calls</div>
                                 </div>
+                                <div>
+                                    <div class="text-soft-gray">Value of Time Saved</div>
+                                    <div class="text-pure-white font-semibold" id="timeValue">$3,000</div>
+                                </div>
+                                <div>
+                                    <div class="text-soft-gray">Maica Monthly Cost</div>
+                                    <div class="text-pure-white font-semibold" id="maicaMonthlyCost">$363</div>
+                                </div>
                             </div>
                         </div>
-                        
+
                         <!-- Annual ROI -->
                         <div class="bg-deep-charcoal/50 rounded-lg p-6 border border-electric-blue/20">
                             <div class="flex items-center justify-between mb-4">
@@ -907,9 +834,13 @@
                                     <div class="text-soft-gray">Maica Cost</div>
                                     <div class="text-pure-white font-semibold" id="maicaCost">$1,422</div>
                                 </div>
+                                <div class="col-span-2">
+                                    <div class="text-soft-gray">Net Annual Savings</div>
+                                    <div class="text-pure-white font-semibold" id="netAnnualSavings">$37,578</div>
+                                </div>
                             </div>
                         </div>
-                        
+
                         <!-- Payback Period -->
                         <div class="bg-gradient-to-r from-vivid-green/20 to-electric-blue/20 rounded-lg p-6 border border-vivid-green/30">
                             <div class="text-center">
@@ -921,14 +852,30 @@
                         
                         <!-- Call to Action -->
                         <div class="text-center pt-4">
-                            <button 
-                                onclick="accessDemo()" 
+                            <button
+                                onclick="accessDemo()"
                                 class="bg-gradient-to-r from-electric-blue to-vivid-green text-pure-white font-bold py-4 px-8 rounded-xl hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                             >
                                 Get Started Today
                             </button>
                             <p class="text-soft-gray text-sm mt-3">Based on data from 150+ communities using Maica</p>
                         </div>
+                    </div>
+
+                    <!-- ROI Breakdown -->
+                    <div class="bg-deep-charcoal/60 border border-light-gray/20 rounded-xl p-6 mt-8">
+                        <h4 class="text-pure-white font-semibold text-lg mb-4 flex items-center">
+                            <i class="fas fa-list-ol text-electric-blue mr-2"></i>
+                            How we calculate this ROI
+                        </h4>
+                        <ol class="list-decimal list-inside space-y-2 text-sm text-soft-gray">
+                            <li id="boardTimeSavedStep">Board time saved calculation.</li>
+                            <li id="timeValueStep">Value of time saved.</li>
+                            <li id="managementSavingsStep">Management fee savings.</li>
+                            <li id="totalSavingsStep">Total monthly savings.</li>
+                            <li id="maicaCostStep">Maica cost comparison.</li>
+                            <li id="roiStep">ROI &amp; payback period.</li>
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -1003,23 +950,23 @@
                     <div class="space-y-4 mb-8">
                         <div class="flex items-center text-pure-white">
                             <i class="fas fa-check text-vivid-green mr-3"></i>
-                            <span>24/7 AI voice agent</span>
+                            <span>24/7 AI voice concierge for homeowners</span>
                         </div>
                         <div class="flex items-center text-pure-white">
                             <i class="fas fa-check text-vivid-green mr-3"></i>
-                            <span>Automated maintenance requests</span>
+                            <span>Auto-created maintenance tickets with Kanban status tracking</span>
                         </div>
                         <div class="flex items-center text-pure-white">
                             <i class="fas fa-check text-vivid-green mr-3"></i>
-                            <span>Resident inquiry handling</span>
+                            <span>Resident knowledge base answers & CC&amp;R guidance</span>
                         </div>
                         <div class="flex items-center text-pure-white">
                             <i class="fas fa-check text-vivid-green mr-3"></i>
-                            <span>Basic Kanban board</span>
+                            <span>Real-time SMS &amp; email status notifications</span>
                         </div>
                         <div class="flex items-center text-pure-white">
                             <i class="fas fa-check text-vivid-green mr-3"></i>
-                            <span>SMS & email notifications</span>
+                            <span>Weekly board digest with open-ticket summary</span>
                         </div>
                     </div>
                     
@@ -1036,71 +983,74 @@
                 </div>
 
                 <!-- Tier 2: Virtual Property Manager -->
-                <div class="bg-gradient-to-br from-electric-blue to-vivid-green p-1 rounded-2xl relative">
-                    <div class="bg-deep-charcoal p-8 rounded-xl">
-                        <div class="text-center mb-8">
-                            <div class="inline-flex items-center space-x-2 bg-vivid-green text-deep-charcoal px-4 py-2 rounded-full text-sm font-bold mb-4">
-                                <i class="fas fa-star"></i>
-                                <span>Most Popular</span>
-                            </div>
+                <div class="bg-gradient-to-br from-electric-blue to-vivid-green p-[1.5px] rounded-2xl relative shadow-[0_30px_80px_-35px_rgba(0,255,136,0.85)]">
+                    <div class="bg-deep-charcoal/95 p-8 rounded-[20px] relative overflow-hidden">
+                        <div class="absolute inset-0 pointer-events-none bg-gradient-to-br from-electric-blue/10 via-transparent to-vivid-green/10 opacity-80"></div>
+                        <div class="relative">
+                            <div class="text-center mb-8">
+                                <div class="inline-flex items-center space-x-2 bg-vivid-green text-deep-charcoal px-4 py-2 rounded-full text-sm font-bold mb-4">
+                                    <i class="fas fa-star"></i>
+                                    <span>Most Popular</span>
+                                </div>
                             <h3 class="text-2xl font-bold text-pure-white mb-2">Virtual Property Manager</h3>
                             <p class="text-soft-gray">AI + Human Oversight</p>
                         </div>
                         
-                        <div class="text-center mb-8">
-                            <div class="flex items-baseline justify-center space-x-2 mb-2">
-                                <span class="text-4xl font-bold text-pure-white">$79</span>
-                                <span class="text-xl text-soft-gray">/mo</span>
+                            <div class="text-center mb-8">
+                                <div class="flex items-baseline justify-center space-x-2 mb-2">
+                                    <span class="text-4xl font-bold text-pure-white">$79</span>
+                                    <span class="text-xl text-soft-gray">/mo</span>
+                                </div>
+                                <p class="text-soft-gray text-sm">per unit</p>
                             </div>
-                            <p class="text-soft-gray text-sm">per unit</p>
+
+                            <div class="space-y-4 mb-8">
+                                <div class="flex items-center text-pure-white">
+                                    <i class="fas fa-check text-vivid-green mr-3"></i>
+                                    <span><strong>Everything in AI Automation</strong></span>
+                                </div>
+                                <div class="flex items-center text-pure-white">
+                                    <i class="fas fa-check text-vivid-green mr-3"></i>
+                                    <span>Dedicated U.S.-based virtual property manager</span>
+                                </div>
+                                <div class="flex items-center text-pure-white">
+                                    <i class="fas fa-check text-vivid-green mr-3"></i>
+                                    <span>Vendor coordination, scheduling &amp; service follow-through</span>
+                                </div>
+                                <div class="flex items-center text-pure-white">
+                                    <i class="fas fa-check text-vivid-green mr-3"></i>
+                                    <span>Monthly financial &amp; board reporting packet</span>
+                                </div>
+                                <div class="flex items-center text-pure-white">
+                                    <i class="fas fa-check text-vivid-green mr-3"></i>
+                                    <span>Escalation handling with 2-hour response SLA</span>
+                                </div>
+                                <div class="flex items-center text-pure-white">
+                                    <i class="fas fa-check text-vivid-green mr-3"></i>
+                                    <span>Budget variance monitoring &amp; alerts</span>
+                                </div>
+                                <div class="flex items-center text-pure-white">
+                                    <i class="fas fa-check text-vivid-green mr-3"></i>
+                                    <span>Quarterly strategy review with your board</span>
+                                </div>
+                            </div>
+
+                            <div class="border-t border-light-gray/60 pt-6 mb-6">
+                                <div class="flex justify-between items-center text-pure-white mb-2">
+                                    <span>Setup fee:</span>
+                                    <span class="font-bold text-xl">$299</span>
+                                </div>
+                            </div>
+
+                            <button onclick="accessDemo()" class="w-full bg-electric-blue text-pure-white px-6 py-4 rounded-lg hover:brightness-110 hover:scale-102 transition-all duration-200 font-bold text-lg">
+                                Get Started
+                            </button>
+
+                            <p class="text-center text-soft-gray text-sm mt-4">
+                                <i class="fas fa-shield-alt mr-1"></i>
+                                30-day money-back guarantee
+                            </p>
                         </div>
-                        
-                        <div class="space-y-4 mb-8">
-                            <div class="flex items-center text-pure-white">
-                                <i class="fas fa-check text-vivid-green mr-3"></i>
-                                <span><strong>Everything in AI Automation</strong></span>
-                            </div>
-                            <div class="flex items-center text-pure-white">
-                                <i class="fas fa-check text-vivid-green mr-3"></i>
-                                <span>Dedicated virtual property manager</span>
-                            </div>
-                            <div class="flex items-center text-pure-white">
-                                <i class="fas fa-check text-vivid-green mr-3"></i>
-                                <span>Vendor coordination & scheduling</span>
-                            </div>
-                            <div class="flex items-center text-pure-white">
-                                <i class="fas fa-check text-vivid-green mr-3"></i>
-                                <span>Advanced reporting & analytics</span>
-                            </div>
-                            <div class="flex items-center text-pure-white">
-                                <i class="fas fa-check text-vivid-green mr-3"></i>
-                                <span>Priority support (2-hour response)</span>
-                            </div>
-                            <div class="flex items-center text-pure-white">
-                                <i class="fas fa-check text-vivid-green mr-3"></i>
-                                <span>Monthly board reports</span>
-                            </div>
-                            <div class="flex items-center text-pure-white">
-                                <i class="fas fa-check text-vivid-green mr-3"></i>
-                                <span>Budget tracking & alerts</span>
-                            </div>
-                        </div>
-                        
-                        <div class="border-t border-light-gray pt-6 mb-6">
-                            <div class="flex justify-between items-center text-pure-white mb-2">
-                                <span>Setup fee:</span>
-                                <span class="font-bold text-xl">$299</span>
-                            </div>
-                        </div>
-                        
-                        <button onclick="accessDemo()" class="w-full bg-electric-blue text-pure-white px-6 py-4 rounded-lg hover:brightness-110 hover:scale-102 transition-all duration-200 font-bold text-lg">
-                            Get Started
-                        </button>
-                        
-                        <p class="text-center text-soft-gray text-sm mt-4">
-                            <i class="fas fa-shield-alt mr-1"></i>
-                            30-day money-back guarantee
-                        </p>
                     </div>
                 </div>
 
@@ -1130,27 +1080,27 @@
                         </div>
                         <div class="flex items-center text-pure-white">
                             <i class="fas fa-check text-vivid-green mr-3"></i>
-                            <span>Dedicated onsite property manager</span>
+                            <span>Full-time onsite property manager (3-5 days/week)</span>
                         </div>
                         <div class="flex items-center text-pure-white">
                             <i class="fas fa-check text-vivid-green mr-3"></i>
-                            <span>Physical property inspections</span>
+                            <span>Documented monthly common-area &amp; safety inspections</span>
                         </div>
                         <div class="flex items-center text-pure-white">
                             <i class="fas fa-check text-vivid-green mr-3"></i>
-                            <span>Emergency response coordination</span>
+                            <span>Emergency response coordination &amp; after-hours dispatch</span>
                         </div>
                         <div class="flex items-center text-pure-white">
                             <i class="fas fa-check text-vivid-green mr-3"></i>
-                            <span>Board meeting attendance</span>
+                            <span>Board meeting preparation &amp; attendance</span>
                         </div>
                         <div class="flex items-center text-pure-white">
                             <i class="fas fa-check text-vivid-green mr-3"></i>
-                            <span>Compliance monitoring</span>
+                            <span>Regulatory compliance &amp; annual filings handled</span>
                         </div>
                         <div class="flex items-center text-pure-white">
                             <i class="fas fa-check text-vivid-green mr-3"></i>
-                            <span>24/7 emergency hotline</span>
+                            <span>24/7 emergency hotline with live dispatcher</span>
                         </div>
                     </div>
                     
@@ -1164,6 +1114,80 @@
                     <button onclick="accessDemo()" class="w-full bg-vivid-green text-deep-charcoal px-6 py-4 rounded-lg hover:brightness-90 hover:scale-102 transition-all duration-200 font-bold text-lg">
                         Contact Sales
                     </button>
+
+                    <p class="text-soft-gray text-sm mt-4">
+                        Typical onsite programs start around <strong>$12k/month</strong> total for 60-150 unit communities and include staffing, inspections, and compliance coverage.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-16">
+                <div class="bg-deep-charcoal/70 border border-light-gray rounded-2xl overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-light-gray/60 text-left">
+                            <thead class="bg-medium-gray/60 text-soft-gray">
+                                <tr>
+                                    <th scope="col" class="px-6 py-4 text-sm font-semibold tracking-wide uppercase">Capability</th>
+                                    <th scope="col" class="px-6 py-4 text-sm font-semibold text-pure-white">AI Automation</th>
+                                    <th scope="col" class="px-6 py-4 text-sm font-semibold text-pure-white">Virtual PM</th>
+                                    <th scope="col" class="px-6 py-4 text-sm font-semibold text-pure-white">Onsite PM</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-light-gray/40 text-sm text-soft-gray">
+                                <tr class="bg-deep-charcoal/40">
+                                    <td class="px-6 py-4 font-semibold text-pure-white">24/7 inbound call handling</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>AI concierge answers &amp; triages</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>AI + manager oversight</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>AI + onsite team coverage</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-semibold text-pure-white">Work order tracking board</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>Kanban with status automation</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>Manager updates &amp; closes tickets</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>Onsite QA &amp; photo verification</td>
+                                </tr>
+                                <tr class="bg-deep-charcoal/40">
+                                    <td class="px-6 py-4 font-semibold text-pure-white">Resident notifications</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>Automated SMS &amp; email updates</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>Personalized follow-ups from manager</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>Proactive onsite status updates</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-semibold text-pure-white">Vendor coordination</td>
+                                    <td class="px-6 py-4"><i class="fas fa-minus text-soft-gray mr-2"></i>Board notified for manual scheduling</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>Manager dispatches &amp; confirms service</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>Onsite escorts vendors &amp; signs off</td>
+                                </tr>
+                                <tr class="bg-deep-charcoal/40">
+                                    <td class="px-6 py-4 font-semibold text-pure-white">Reporting &amp; analytics</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>Weekly ticket digest</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>Monthly financial + KPI reporting</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>Board-ready reporting &amp; compliance docs</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-semibold text-pure-white">Onsite coverage</td>
+                                    <td class="px-6 py-4"><i class="fas fa-minus text-soft-gray mr-2"></i>Remote only</td>
+                                    <td class="px-6 py-4"><i class="fas fa-minus text-soft-gray mr-2"></i>Remote with vendor visits as needed</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>Scheduled onsite presence weekly</td>
+                                </tr>
+                                <tr class="bg-deep-charcoal/40">
+                                    <td class="px-6 py-4 font-semibold text-pure-white">Emergency response</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>24/7 escalation tree</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>Manager coordination within 2 hours</td>
+                                    <td class="px-6 py-4"><i class="fas fa-check text-vivid-green mr-2"></i>Onsite support &amp; after-hours dispatch</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 font-semibold text-pure-white">Ideal community size</td>
+                                    <td class="px-6 py-4">100-300 units seeking automation</td>
+                                    <td class="px-6 py-4">150-500 units needing human oversight</td>
+                                    <td class="px-6 py-4">200+ units requiring onsite presence</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="px-6 py-4 bg-medium-gray/40 text-xs text-soft-gray">
+                        <span class="block">All tiers include resident satisfaction tracking, audit logs, and access to our implementation specialists.</span>
+                    </div>
                 </div>
             </div>
             

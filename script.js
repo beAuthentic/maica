@@ -581,62 +581,111 @@ function toggleFAQ(faqId) {
     }
 }
 
+// ROI Calculator Utilities
+function formatCurrency(value, { minimumFractionDigits = 0, maximumFractionDigits = 0 } = {}) {
+    if (!isFinite(value)) {
+        return '$0';
+    }
+
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits,
+        maximumFractionDigits
+    }).format(value);
+}
+
+function formatNumber(value, digits = 0) {
+    if (!isFinite(value)) {
+        return '0';
+    }
+
+    return Number(value).toLocaleString('en-US', {
+        minimumFractionDigits: digits,
+        maximumFractionDigits: digits
+    });
+}
+
+function formatHours(value) {
+    if (!isFinite(value)) {
+        return '0 hours';
+    }
+
+    const rounded = Math.round(value * 10) / 10;
+    const hasDecimal = Math.abs(rounded % 1) > 0;
+    const display = hasDecimal ? rounded.toFixed(1) : formatNumber(rounded);
+    return `${display} hours`;
+}
+
+function updateText(id, text) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.textContent = text;
+    }
+}
+
 // ROI Calculator Function
 function calculateROI() {
-    // Get input values with defaults
-    const units = parseInt(document.getElementById('units')?.value) || 150;
-    const inquiries = parseInt(document.getElementById('inquiries')?.value) || 200;
-    const hourlyRate = parseFloat(document.getElementById('hourlyRate')?.value) || 50;
-    const managementFee = parseFloat(document.getElementById('managementFee')?.value) || 1200;
-    
-    // Constants based on real Maica data
+    const units = parseFloat(document.getElementById('roiUnits')?.value) || 150;
+    const inquiries = parseFloat(document.getElementById('roiInquiries')?.value) || 200;
+    const hourlyRate = parseFloat(document.getElementById('roiHourlyRate')?.value) || 50;
+    const managementFee = parseFloat(document.getElementById('roiManagementFee')?.value) || 1200;
+
     const callReductionRate = 0.96; // 96% call reduction
-    const avgCallDuration = 12; // minutes per call
     const boardTimePerCall = 15; // minutes of board time per inquiry
-    
-    // Calculate monthly savings
+    const managementEfficiencyGain = 0.4; // 40% reduction in management workload
+    const maicaAnnualCostPerUnit = 29; // $29 per unit annually
+    const maicaMonthlyCostPerUnit = maicaAnnualCostPerUnit / 12;
+
     const callsAutomated = Math.round(inquiries * callReductionRate);
-    const boardTimesSavedHours = (inquiries * boardTimePerCall * callReductionRate) / 60;
-    const boardTimeSavingsValue = boardTimesSavedHours * hourlyRate;
-    
-    // Management efficiency improvements (reduce management workload by 40%)
-    const managementSavings = managementFee * 0.4;
-    
-    // Total monthly savings
+    const boardHoursSaved = (inquiries * boardTimePerCall * callReductionRate) / 60;
+    const boardTimeSavingsValue = boardHoursSaved * hourlyRate;
+    const managementSavings = managementFee * managementEfficiencyGain;
     const totalMonthlySavings = boardTimeSavingsValue + managementSavings;
-    
-    // Maica costs (assume Basic tier for calculation)
-    const maicaMonthlyCost = units * 1.18; // Basic tier $29/unit/year = $2.42/month, but let's use realistic pricing
-    const maicaAnnualCost = units * 29; // Basic tier annual cost
-    
-    // Calculate ROI metrics
+
+    const maicaMonthlyCost = units * maicaMonthlyCostPerUnit;
+    const maicaAnnualCost = units * maicaAnnualCostPerUnit;
+
     const annualSavings = totalMonthlySavings * 12;
     const netAnnualSavings = annualSavings - maicaAnnualCost;
     const roiPercentage = maicaAnnualCost > 0 ? (netAnnualSavings / maicaAnnualCost) * 100 : 0;
-    const paybackMonths = maicaAnnualCost > 0 ? maicaAnnualCost / totalMonthlySavings : 0;
-    
-    // Update display elements
-    if (document.getElementById('monthlySavings')) {
-        document.getElementById('monthlySavings').textContent = `$${Math.round(totalMonthlySavings).toLocaleString()}`;
-    }
-    if (document.getElementById('timeSaved')) {
-        document.getElementById('timeSaved').textContent = `${Math.round(boardTimesSavedHours)} hours`;
-    }
-    if (document.getElementById('callsAutomated')) {
-        document.getElementById('callsAutomated').textContent = `${callsAutomated} calls`;
-    }
-    if (document.getElementById('annualROI')) {
-        document.getElementById('annualROI').textContent = `${Math.round(roiPercentage).toLocaleString()}%`;
-    }
-    if (document.getElementById('annualSavings')) {
-        document.getElementById('annualSavings').textContent = `$${Math.round(annualSavings).toLocaleString()}`;
-    }
-    if (document.getElementById('maicaCost')) {
-        document.getElementById('maicaCost').textContent = `$${Math.round(maicaAnnualCost).toLocaleString()}`;
-    }
-    if (document.getElementById('paybackPeriod')) {
-        document.getElementById('paybackPeriod').textContent = paybackMonths < 1 ? '0.4' : paybackMonths.toFixed(1);
-    }
+    const paybackMonths = totalMonthlySavings > 0 ? maicaAnnualCost / totalMonthlySavings : Infinity;
+
+    const monthlySavingsDisplay = formatCurrency(totalMonthlySavings);
+    const timeSavedDisplay = formatHours(boardHoursSaved);
+    const callsAutomatedDisplay = `${formatNumber(callsAutomated)} calls`;
+    const timeValueDisplay = formatCurrency(boardTimeSavingsValue);
+    const maicaMonthlyDisplay = formatCurrency(maicaMonthlyCost, { maximumFractionDigits: 0 });
+    const annualSavingsDisplay = formatCurrency(annualSavings);
+    const maicaAnnualDisplay = formatCurrency(maicaAnnualCost, { maximumFractionDigits: 0 });
+    const netAnnualDisplay = formatCurrency(netAnnualSavings);
+    const roiDisplay = `${formatNumber(Math.round(roiPercentage))}%`;
+    const paybackDisplay = isFinite(paybackMonths) && paybackMonths > 0 ? paybackMonths.toFixed(1) : 'N/A';
+
+    updateText('monthlySavings', monthlySavingsDisplay);
+    updateText('timeSaved', timeSavedDisplay);
+    updateText('callsAutomated', callsAutomatedDisplay);
+    updateText('timeValue', timeValueDisplay);
+    updateText('maicaMonthlyCost', maicaMonthlyDisplay);
+    updateText('annualSavings', annualSavingsDisplay);
+    updateText('maicaCost', maicaAnnualDisplay);
+    updateText('netAnnualSavings', netAnnualDisplay);
+    updateText('annualROI', roiDisplay);
+    updateText('paybackPeriod', paybackDisplay);
+
+    const boardTimeStep = `${formatNumber(inquiries)} inquiries × ${boardTimePerCall} minutes × 96% ÷ 60 = ${timeSavedDisplay}`;
+    const timeValueStep = `${timeSavedDisplay} × ${formatCurrency(hourlyRate, { minimumFractionDigits: 0, maximumFractionDigits: 0 })}/hr = ${timeValueDisplay} in time value each month.`;
+    const managementSavingsStep = `40% efficiency gain on ${formatCurrency(managementFee, { minimumFractionDigits: 0, maximumFractionDigits: 0 })} management fees = ${formatCurrency(managementSavings)} saved monthly.`;
+    const totalSavingsStep = `${timeValueDisplay} + ${formatCurrency(managementSavings)} = ${monthlySavingsDisplay} total monthly savings.`;
+    const maicaCostStep = `${formatNumber(units)} units × $29/year ÷ 12 = ${formatCurrency(maicaMonthlyCost, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} per month (${maicaAnnualDisplay} annually).`;
+    const roiStep = `Annual ROI = (${annualSavingsDisplay} - ${maicaAnnualDisplay}) ÷ ${maicaAnnualDisplay} = ${roiDisplay}. Payback in ${paybackDisplay} months.`;
+
+    updateText('boardTimeSavedStep', boardTimeStep);
+    updateText('timeValueStep', timeValueStep);
+    updateText('managementSavingsStep', managementSavingsStep);
+    updateText('totalSavingsStep', totalSavingsStep);
+    updateText('maicaCostStep', maicaCostStep);
+    updateText('roiStep', roiStep);
 }
 
 // Initialize calculator on page load
