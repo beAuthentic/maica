@@ -1,0 +1,1148 @@
+/* AI Website Design System - MaiCa Landing Page */
+
+/* CSS Custom Properties for AI Design System */
+:root {
+    /* Colors */
+    --electric-blue: #0066FF;
+    --vivid-green: #00FF88;
+    --pure-white: #FFFFFF;
+    --deep-charcoal: #1A1A1A;
+    --medium-gray: #2A2A2A;
+    --light-gray: #404040;
+    --warning-orange: #FF6B35;
+    --muted-blue: #4A90E2;
+    --soft-gray: #888888;
+    
+    /* Typography Scale */
+    --font-hero: 72px;
+    --font-section: 48px;
+    --font-subsection: 32px;
+    --font-body-large: 20px;
+    --font-body: 16px;
+    --font-small: 14px;
+    --font-caption: 12px;
+    
+    /* Spacing Scale (8px base) */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+    --space-2xl: 64px;
+    --space-3xl: 96px;
+    
+    /* Animation timing */
+    --duration-fast: 200ms;
+    --duration-normal: 300ms;
+    --duration-slow: 400ms;
+    --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth scrolling with AI design principles */
+html {
+    scroll-behavior: smooth;
+}
+
+/* AI Design System Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes checkMark {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* AI Design System Animation Classes */
+.animate-fade-in-up {
+    animation: fadeInUp var(--duration-normal) var(--ease-standard);
+}
+
+.animate-fade-in-left {
+    animation: fadeInLeft var(--duration-normal) var(--ease-standard);
+}
+
+.animate-fade-in-right {
+    animation: fadeInRight var(--duration-normal) var(--ease-standard);
+}
+
+.animate-pulse-slow {
+    animation: pulse 2s infinite;
+}
+
+/* AI Design System Scale Animation */
+.scale-102 {
+    transform: scale(1.02);
+}
+
+/* AI Navbar effects */
+.navbar-scrolled {
+    background-color: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 1px 3px rgba(0, 102, 255, 0.2);
+    border-bottom-color: var(--electric-blue);
+}
+
+/* Ensure navbar stays fixed properly */
+#navbar {
+    position: fixed !important;
+    top: 48px !important; /* Fixed position below banner */
+    z-index: 40 !important;
+}
+
+@media (min-width: 640px) {
+    #navbar {
+        top: 56px !important; /* Adjusted for larger banner on sm+ screens */
+    }
+}
+
+/* AI Design System Gradients */
+.gradient-primary {
+    background: linear-gradient(135deg, var(--electric-blue) 0%, var(--muted-blue) 100%);
+}
+
+.gradient-accent {
+    background: linear-gradient(135deg, var(--vivid-green) 0%, var(--electric-blue) 100%);
+}
+
+.gradient-ai {
+    background: linear-gradient(135deg, var(--electric-blue) 0%, var(--vivid-green) 100%);
+}
+
+/* AI Design System Button Effects */
+.btn-primary {
+    background: var(--electric-blue);
+    color: var(--pure-white);
+    padding: 12px 16px;
+    border-radius: 8px;
+    transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+    transform: scale(1.02);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid var(--electric-blue);
+    color: var(--electric-blue);
+    padding: 12px 16px;
+    border-radius: 8px;
+    transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.btn-secondary:hover {
+    background: var(--electric-blue);
+    color: var(--pure-white);
+    transform: scale(1.02);
+}
+
+.btn-ghost {
+    background: transparent;
+    border: none;
+    color: var(--electric-blue);
+    padding: 12px 16px;
+    transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.btn-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn-disabled:hover {
+    transform: none;
+    filter: none;
+}
+
+/* AI Design System Card Effects */
+.ai-card {
+    background: var(--medium-gray);
+    border: 1px solid var(--light-gray);
+    border-radius: 12px;
+    padding: 32px;
+    transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.ai-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card-hover {
+    transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0, 102, 255, 0.2);
+}
+
+/* AI Feature Cards */
+.feature-card {
+    position: relative;
+    overflow: hidden;
+    transition: all var(--duration-normal) var(--ease-standard);
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 102, 255, 0.1), transparent);
+    transition: left var(--duration-slow) var(--ease-standard);
+}
+
+.feature-card:hover::before {
+    left: 100%;
+}
+
+/* Icon animations */
+.icon-bounce {
+    transition: transform 0.3s ease;
+}
+
+.icon-bounce:hover {
+    transform: scale(1.1);
+}
+
+/* AI Design System Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--medium-gray);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--electric-blue);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--vivid-green);
+}
+
+/* Mobile menu animation */
+.mobile-menu-enter {
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading states */
+.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: loading 2s infinite;
+}
+
+@keyframes loading {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Feature card special effects */
+.feature-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.feature-card:hover::before {
+    left: 100%;
+}
+
+/* Stats animation */
+.stat-number {
+    font-variant-numeric: tabular-nums;
+}
+
+/* AI Design System Responsive Behavior */
+
+/* Mobile Adaptations (0-768px) */
+@media (max-width: 767px) {
+    /* Typography scaling - reduce by 20-30% */
+    .text-hero {
+        font-size: 2.5rem !important; /* 40px instead of 72px */
+        line-height: 1.2;
+    }
+    
+    .text-section {
+        font-size: 1.875rem !important; /* 30px instead of 48px */
+        line-height: 1.3;
+    }
+    
+    .text-subsection {
+        font-size: 1.5rem !important; /* 24px instead of 32px */
+        line-height: 1.4;
+    }
+    
+    .text-body-large {
+        font-size: 1.125rem !important; /* 18px instead of 20px */
+        line-height: 1.6;
+    }
+    
+    /* Spacing - reduce section padding to 60px */
+    .py-30 {
+        padding-top: 3.75rem !important; /* 60px */
+        padding-bottom: 3.75rem !important;
+    }
+    
+    /* Touch targets - increase button sizes */
+    .btn-primary,
+    .btn-secondary,
+    button {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px 16px;
+    }
+    
+    /* Mobile navigation improvements */
+    #mobile-menu {
+        padding: 1.5rem 0;
+    }
+    
+    #mobile-menu a,
+    #mobile-menu button {
+        padding: 0.75rem 0.5rem;
+        font-size: 1.125rem;
+    }
+}
+
+/* Tablet Adaptations (768-1024px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .text-hero {
+        font-size: 3.5rem; /* 56px */
+    }
+    
+    .text-section {
+        font-size: 2.5rem; /* 40px */
+    }
+    
+    .text-subsection {
+        font-size: 1.75rem; /* 28px */
+    }
+}
+
+/* Desktop and up (1024px+) */
+@media (min-width: 1024px) {
+    /* Full typography scale */
+    .text-hero {
+        font-size: 4.5rem; /* 72px */
+    }
+    
+    .text-section {
+        font-size: 3rem; /* 48px */
+    }
+}
+
+/* Extra large screens (1280px+) */
+@media (min-width: 1280px) {
+    /* Enhanced spacing for larger screens */
+    .container-spacing {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+/* Responsive grid improvements */
+@media (max-width: 767px) {
+    /* Stack all grids on mobile */
+    .grid-responsive {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    /* Card adjustments for mobile */
+    .feature-card,
+    .ai-card {
+        padding: 1.5rem !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* 2-column layout for tablets where appropriate */
+    .grid-tablet-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Responsive text alignment */
+@media (max-width: 767px) {
+    .text-center-mobile {
+        text-align: center !important;
+    }
+    
+    .text-left-desktop {
+        text-align: center !important;
+    }
+}
+
+/* AI Design System Form Elements */
+.ai-form-input {
+    background: var(--deep-charcoal);
+    border: 1px solid var(--light-gray);
+    color: var(--pure-white);
+    border-radius: 8px;
+    padding: 16px 20px;
+    transition: all var(--duration-fast) var(--ease-standard);
+}
+
+.ai-form-input:focus {
+    outline: none;
+    border-color: var(--electric-blue);
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+}
+
+.ai-form-input::placeholder {
+    color: var(--soft-gray);
+}
+
+.ai-form-select {
+    background: var(--deep-charcoal);
+    border: 1px solid var(--light-gray);
+    color: var(--pure-white);
+    border-radius: 8px;
+    padding: 16px 20px;
+    transition: all var(--duration-fast) var(--ease-standard);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23888888' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    padding-right: 48px;
+}
+
+.ai-form-select:focus {
+    outline: none;
+    border-color: var(--electric-blue);
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+}
+
+.ai-form-label {
+    color: var(--pure-white);
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.ai-form-required {
+    color: var(--electric-blue);
+}
+
+/* Form validation states */
+.ai-form-input:invalid {
+    border-color: var(--warning-orange);
+}
+
+.ai-form-input:valid {
+    border-color: var(--vivid-green);
+}
+
+/* Loading spinner for forms */
+.form-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--pure-white);
+    animation: spin 1s ease-in-out infinite;
+}
+
+/* Mobile-friendly hover states */
+@media (hover: none) {
+    .hover\\:scale-102:hover {
+        transform: none;
+    }
+    
+    .hover\\:brightness-110:hover {
+        filter: none;
+    }
+    
+    .hover\\:-translate-y-1:hover {
+        transform: none;
+    }
+}
+
+/* AI Animation Performance Optimizations */
+
+/* Reduce animations on smaller screens */
+@media (max-width: 768px) {
+    .ai-node {
+        display: none;
+    }
+    
+    .geometric-shape {
+        display: none;
+    }
+    
+    .particle {
+        animation-duration: 20s;
+    }
+    
+    .neural-path {
+        animation-duration: 6s;
+    }
+}
+
+/* Reduce animations for low-power devices */
+@media (max-width: 480px) {
+    .neural-path {
+        animation: none;
+        opacity: 0.1;
+    }
+    
+    .pulse-circle {
+        animation-duration: 4s;
+    }
+    
+    .particle:nth-child(odd) {
+        display: none;
+    }
+}
+
+/* Pause animations when not in viewport */
+@media (prefers-reduced-motion: reduce) {
+    .ai-node,
+    .neural-path,
+    .pulse-circle,
+    .geometric-shape,
+    .particle {
+        animation: none !important;
+    }
+    
+    .ai-node {
+        opacity: 0.2;
+    }
+    
+    .pulse-circle {
+        opacity: 0.4;
+    }
+}
+
+/* AI Design System Accessibility */
+.focus-ring:focus {
+    outline: 2px solid var(--electric-blue);
+    outline-offset: 2px;
+}
+
+/* High contrast focus for better accessibility */
+button:focus,
+a:focus,
+input:focus {
+    outline: 2px solid var(--electric-blue);
+    outline-offset: 2px;
+}
+
+/* Ensure sufficient contrast for all text */
+.text-contrast-aa {
+    color: var(--pure-white);
+    /* 21:1 contrast ratio on deep charcoal background */
+}
+
+.text-contrast-secondary {
+    color: var(--soft-gray);
+    /* 7:1 contrast ratio - AAA compliant */
+}
+
+/* Skip to main content for screen readers */
+.skip-to-main {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.skip-to-main:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    background: var(--electric-blue);
+    color: var(--pure-white);
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .bg-primary-500,
+    .bg-primary-600 {
+        background: #3b82f6 !important;
+        color: white !important;
+    }
+}
+
+/* Dark mode support (if needed) */
+@media (prefers-color-scheme: dark) {
+    /* Add dark mode styles here if needed */
+}
+
+/* High contrast mode support - AI Design System */
+@media (prefers-contrast: high) {
+    :root {
+        --soft-gray: #CCCCCC;
+        --light-gray: #666666;
+    }
+    
+    .border-light-gray {
+        border-color: var(--pure-white) !important;
+    }
+    
+    .text-soft-gray {
+        color: var(--pure-white) !important;
+    }
+    
+    /* Increase button contrast */
+    .bg-electric-blue {
+        background-color: #0099FF !important;
+    }
+    
+    .bg-vivid-green {
+        background-color: #00FF99 !important;
+    }
+}
+
+/* Reduced motion support - AI Design System */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    html {
+        scroll-behavior: auto !important;
+    }
+    
+    /* Disable transform animations */
+    .hover\:scale-102:hover {
+        transform: none !important;
+    }
+    
+    .hover\:-translate-y-1:hover {
+        transform: none !important;
+    }
+}
+
+/* Custom utilities */
+.backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+}
+
+.text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.border-gradient {
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, #3b82f6, #10b981) border-box;
+    border: 2px solid transparent;
+}
+
+/* Interactive elements */
+.interactive:hover {
+    cursor: pointer;
+}
+
+.interactive:active {
+    transform: scale(0.98);
+}
+
+/* Status indicators */
+.status-online {
+    position: relative;
+}
+
+.status-online::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 12px;
+    height: 12px;
+    background: #10b981;
+    border: 2px solid white;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+/* Loading spinner */
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* AI Design System Grid Pattern */
+.grid-pattern {
+    background-image: 
+        linear-gradient(rgba(0, 102, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 102, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* AI Circuit Pattern */
+.circuit-pattern {
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 80% 80%, rgba(0, 102, 255, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* Floating animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* AI Design System Glow Effects */
+.glow {
+    box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
+}
+
+.glow-hover:hover {
+    box-shadow: 0 0 30px rgba(0, 102, 255, 0.4);
+    transition: box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.glow-green {
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+/* AI Pulse Animation for Online Indicators */
+@keyframes pulse-ai {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+.pulse-ai {
+    animation: pulse-ai 2s infinite;
+}
+
+/* AI Hero Abstract Animation System */
+
+/* Floating AI Nodes */
+.ai-node {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: linear-gradient(135deg, var(--electric-blue), var(--vivid-green));
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: floatNode 8s ease-in-out infinite;
+}
+
+.ai-node-1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 6s;
+}
+
+.ai-node-2 {
+    top: 15%;
+    right: 20%;
+    animation-delay: 1s;
+    animation-duration: 8s;
+}
+
+.ai-node-3 {
+    bottom: 30%;
+    left: 15%;
+    animation-delay: 2s;
+    animation-duration: 7s;
+}
+
+.ai-node-4 {
+    bottom: 20%;
+    right: 15%;
+    animation-delay: 3s;
+    animation-duration: 9s;
+}
+
+.ai-node-5 {
+    top: 50%;
+    right: 5%;
+    animation-delay: 4s;
+    animation-duration: 5s;
+}
+
+@keyframes floatNode {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+    }
+    25% {
+        transform: translate(10px, -15px) scale(1.2);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(-5px, -25px) scale(0.9);
+        opacity: 0.4;
+    }
+    75% {
+        transform: translate(-10px, -10px) scale(1.1);
+        opacity: 0.7;
+    }
+}
+
+/* Neural Network Path Animations */
+.neural-path {
+    stroke-dasharray: 20, 10;
+    animation: networkFlow 4s linear infinite;
+}
+
+.neural-path-1 {
+    animation-delay: 0s;
+}
+
+.neural-path-2 {
+    animation-delay: 1s;
+}
+
+.neural-path-3 {
+    animation-delay: 2s;
+}
+
+.neural-path-4 {
+    animation-delay: 3s;
+}
+
+@keyframes networkFlow {
+    0% {
+        stroke-dashoffset: 0;
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        stroke-dashoffset: -30;
+        opacity: 0.2;
+    }
+}
+
+/* Pulse Circles */
+.pulse-circle {
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.pulse-1 {
+    animation-delay: 0s;
+}
+
+.pulse-2 {
+    animation-delay: 0.4s;
+}
+
+.pulse-3 {
+    animation-delay: 0.8s;
+}
+
+.pulse-4 {
+    animation-delay: 1.2s;
+}
+
+.pulse-5 {
+    animation-delay: 1.6s;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Geometric Shapes */
+.geometric-shape {
+    position: absolute;
+    opacity: 0.1;
+    animation: geometricFloat 12s ease-in-out infinite;
+}
+
+.shape-1 {
+    top: 10%;
+    left: 70%;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, var(--electric-blue), transparent);
+    transform: rotate(45deg);
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    bottom: 15%;
+    left: 5%;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--vivid-green);
+    border-radius: 50%;
+    animation-delay: 4s;
+}
+
+.shape-3 {
+    top: 60%;
+    right: 10%;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--electric-blue), transparent);
+    animation-delay: 8s;
+}
+
+@keyframes geometricFloat {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.1;
+    }
+    33% {
+        transform: translate(20px, -30px) rotate(120deg);
+        opacity: 0.3;
+    }
+    66% {
+        transform: translate(-15px, -20px) rotate(240deg);
+        opacity: 0.2;
+    }
+}
+
+/* Particle System */
+.particle-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: var(--vivid-green);
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: particleFloat 15s linear infinite;
+}
+
+.particle-1 {
+    top: 10%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.particle-2 {
+    top: 30%;
+    left: 80%;
+    animation-delay: 2s;
+}
+
+.particle-3 {
+    top: 70%;
+    left: 10%;
+    animation-delay: 4s;
+}
+
+.particle-4 {
+    top: 50%;
+    left: 60%;
+    animation-delay: 6s;
+}
+
+.particle-5 {
+    top: 20%;
+    left: 40%;
+    animation-delay: 8s;
+}
+
+.particle-6 {
+    top: 80%;
+    left: 70%;
+    animation-delay: 10s;
+}
+
+.particle-7 {
+    top: 40%;
+    left: 90%;
+    animation-delay: 12s;
+}
+
+.particle-8 {
+    top: 60%;
+    left: 30%;
+    animation-delay: 14s;
+}
+
+@keyframes particleFloat {
+    0% {
+        transform: translate(0, 0) scale(0.5);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    90% {
+        opacity: 0.4;
+        transform: translate(0, -100vh) scale(1);
+    }
+    100% {
+        transform: translate(0, -100vh) scale(0.5);
+        opacity: 0;
+    }
+}
